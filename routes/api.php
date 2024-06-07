@@ -61,10 +61,6 @@ Route::controller(ActivityController::class)->group(function() {
     Route::get('/Safari/Explore',  'SafariAction');
     });
 
-// import hotels
-// Route::get('/Hotels', [PlacesController::class, 'AllHotelsAction']);
-// Route::post('/Cities/{cityId}/AddReviews', [ReviewController::class, 'addReviewToCity']);
-
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/Cities/AddCityReview/{cityid}', [ReviewCity::class, 'AddReviewToCity']);
     Route::post('/Hotels/AddHotelReview/{hotelid}', [HotelReviewController::class, 'AddReviewToHotel']);

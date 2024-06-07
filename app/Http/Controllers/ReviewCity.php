@@ -25,7 +25,7 @@ class ReviewCity extends Controller
         }
         $review = new CityReview();
         $review->city_id = $cityId;
-        $review->user_id = auth()->id(); // Ensure you have user authentication in place
+        $review->user_id = auth()->id(); 
         $review->rating = $request->input('rating');
         $review->comment = $request->input('comment');
         $review->save();

@@ -55,7 +55,7 @@ public function updateProfile(Request $request)
     $user->phone = $request->phone;
     $user->gender = $request->gender;
     $user->birth_date = $request->birth_date;
-    $user->save();
+    // $user->save();
 
     return response()->json([
         'message' => 'Profile updated successfully',
@@ -79,7 +79,7 @@ public function updateProfile(Request $request)
             $token = $user->createtoken('auth-token')->plainTextToken;
             return response()->Json([
                 'token'=>$token
-               ]);
+                ]);
 
     }
 }

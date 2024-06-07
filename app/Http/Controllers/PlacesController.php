@@ -80,10 +80,4 @@ class PlacesController extends Controller
         $hotelreview = $hotel->hotelreview()->first();
         return ['hotel' => $hotel, 'hotelreview' => $hotelreview];
     }
-    // public function AllHotelsAction()
-    // {
-    //     $hotels = All_hotel::all();
-
-    //     return $hotels;
-    // }//
 }

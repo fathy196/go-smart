@@ -25,7 +25,7 @@ class LandmarkReviewController extends Controller
         }
         $review = new LandmarkReview();
         $review->landmark_id = $landmarkid;
-        $review->user_id = auth()->id(); // Ensure you have user authentication in place
+        $review->user_id = auth()->id(); 
         $review->rating = $request->input('rating');
         $review->comment = $request->input('comment');
         $review->save();

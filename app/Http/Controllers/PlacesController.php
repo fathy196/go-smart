@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\All_hotel;
 use App\Models\City;
 use App\Models\Hotel;
 use App\Models\Landmark;

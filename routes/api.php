@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CityReview;
 use App\Http\Controllers\DriverController;
@@ -38,6 +39,7 @@ Route::get('/auth', function (Request $request) {
 })->name('auth');
 
 Route::post('register', [AuthController::class, 'register']);
+Route::put('updateProfile', [AuthController::class, 'updateProfile']);
 Route::post('login', [AuthController::class, 'login']);
 
 Route::get('/Cities/Explore', [PlacesController::class, 'CitiesAction']);
@@ -51,6 +53,13 @@ Route::get('/Resturants/Explore/{Resturantid}', [PlacesController::class, 'ShowO
 
 Route::get('/Hotels/Explore', [PlacesController::class, 'HotelsAction']);
 Route::get('/Hotels/Explore/{Hotelid}', [PlacesController::class, 'ShowOneHotel']);
+
+Route::controller(ActivityController::class)->group(function() {
+    Route::get('/Historical/Explore', 'HistoricalAction');
+    Route::get('/Diving/Explore', 'DivingAction');
+    Route::get('/Relaxation/Explore', 'relaxationAction');
+    Route::get('/Safari/Explore',  'SafariAction');
+    });
 
 // import hotels
 // Route::get('/Hotels', [PlacesController::class, 'AllHotelsAction']);
@@ -74,6 +83,11 @@ Route::post('/Import/City', 'ImportCity');
 Route::post('/Import/Hotel', 'ImportHotel');
 Route::post('/Import/Landmark', 'ImportLandmark');
 Route::post('/Import/Resturant',  'ImportResturant');
+Route::post('/Import/Historical',  'ImportHistorical');
+Route::post('/Import/Diving',  'ImportDiving');
+Route::post('/Import/Relaxation',  'ImportRelaxation');
+Route::post('/Import/Safari',  'ImportSafari');
+
 });
 
 Route::apiResource('/drivers',DriverController::class);

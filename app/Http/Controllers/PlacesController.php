@@ -35,18 +35,26 @@ class PlacesController extends Controller
     public function LandmarksAction()
     {
         $landmarks = Landmark::all();
-
-        return $landmarks;
+    
+        return response()->json($landmarks, 200, [], JSON_UNESCAPED_UNICODE);
     }
+    
     public function ShowOneLandmark($landmarkid)
     {
-        $landmark = landmark::findOrFail($landmarkid);
-
+        $landmark = Landmark::findOrFail($landmarkid);
+    
         if (!$landmarkid) {
-            return ['status' => 404];
+            return response()->json(['status' => 404], 404); 
         }
+    
         $landmarkreview = $landmark->landmarkreview()->first();
-        return ['landmark' => $landmark, 'landmarkreview' => $landmarkreview];
+    
+        $data = [
+            'landmark' => $landmark,
+            'landmarkreview' => $landmarkreview
+        ];
+    
+        return response()->json($data, 200, [], JSON_UNESCAPED_UNICODE);
     }
     public function ResturantsAction()
     {
